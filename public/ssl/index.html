@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>SSL.</title>
+  <link href="assets/ssl.css" rel="stylesheet" />
+  <script src="assets/ssl.js"></script>
+</head>
+
+<body class="deck-container">
+
+<!-- Begin slides. Just make elements with a class of slide. -->
+<section id="intro" class="slide">
+  <h2>SSL</h2>
+  <p>
+    SSL (pronounced as separate letters) is short for <em>Secure Sockets Layer</em>.
+  </p>
+  <p>
+    <strong>Secure Sockets Layer (SSL)</strong> is a protocol developed by Netscape for transmitting private documents via the Internet. SSL uses a cryptographic system that uses two keys to encrypt data − a public key known to everyone and a private or secret key known only to the recipient of the message.
+  </p>
+  Rakefile
+  <script type="syntaxhighlighter" class="brush: ruby">
+    desc "Make coffee"
+    task :make_coffee do
+      puts "Made a cup of coffee. Shakes are gone."
+    end
+  </script>
+  <script type="syntaxhighlighter" class="brush: bash">
+    rake -T
+    rake morning:make_coffee  # Make coffee
+  </script>
+</section><section id="how-ssl-works" class="slide">
+
+<h2>How SSL Works</h2>
+
+<p>
+  When a Web browser tries to connect to a website using SSL, the browser will first request the web server identify itself. This prompts the web server to send the browser a copy of the SSL Certificate. The browser checks to see if the SSL Certificate is trusted --  if the SSL Certificate is trusted, then the browser sends a message to the Web server. The server then responds to the browser with a digitally signed acknowledgement to start an SSL encrypted session. This allows encrypted data to be shared between the browser and the server. You may notice that your browsing session now starts with https (and not http).
+</p>
+
+</section>
+<!-- End slides. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+</body>
+</html>

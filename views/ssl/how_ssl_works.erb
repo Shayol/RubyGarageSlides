@@ -1,0 +1,69 @@
+<section id="how-ssl-works" class="slide">
+
+<h2>How SSL Works</h2>
+
+<p>
+  When a Web browser tries to connect to a website using SSL, the browser will first request the web server identify itself. This prompts the web server to send the browser a copy of the SSL Certificate. The browser checks to see if the SSL Certificate is trusted --  if the SSL Certificate is trusted, then the browser sends a message to the Web server. The server then responds to the browser with a digitally signed acknowledgement to start an SSL encrypted session. This allows encrypted data to be shared between the browser and the server. You may notice that your browsing session now starts with https (and not http).
+</p>
+
+<p>
+  <a href='https://www.symantec.com/page.jsp?id=how-ssl-works'>What Happens When a Browser Encounters SSL</a>
+</p>
+
+    <ol>
+      <li>
+        A browser attempts to connect to a website secured with SSL.
+      </li>
+
+      <li>
+        The browser requests that the web server identify itself.
+      </li>
+
+      <li>
+        The server sends the browser a copy of its SSL Certificate.
+      </li>
+
+      <li>
+        The browser checks whether it trusts the SSL Certificate. If so, it sends a message to the server.
+      </li>
+
+      <li>
+        The server sends back a digitally signed acknowledgement to start an SSL encrypted session.
+      </li>
+
+      <li>
+        Encrypted data is shared between the browser and the server and https appears.
+      </li>
+    </ol>
+
+  Encryption Protects Data During Transmission
+  <p>
+    Web servers and web browsers rely on the Secure Sockets Layer (SSL) protocol to help users protect their data during transfer by creating a uniquely encrypted channel for private communications over the public Internet. Each SSL Certificate consists of a key pair as well as verified identification information. When a web browser (or client) points to a secured website, the server shares the public key with the client to establish an encryption method and a unique session key. The client confirms that it recognizes and trusts the issuer of the SSL Certificate. This process is known as the "SSL handshake" and it begins a secure session that protects message privacy, message integrity, and server security.
+  </p>
+
+  Credentials Establish Identity Online
+
+  <p>
+    Credentials for establishing identity are common: a driver's license, a passport, a company badge. SSL Certificates are credentials for the online world, uniquely issued to a specific domain and web server and authenticated by the SSL Certificate provider. When a browser connects to a server, the server sends the identification information to the browser.
+  </p>
+
+  <p>
+  Browsers and/or operating systems tend to come with a pre-defined list of CA certificates used as trust anchors to check the certificates of servers they connect to. They're all customisable (except for EV certificates, for which the root certificates are hard-coded into the browser, although you can disable them.
+
+  Firefox uses its own list on all platforms.
+
+  Internet Explorer and Chrome use the operating system's certificate repository on Windows. The default is available via Microsoft's Root Certificate programme.
+
+  Apple also has its programme.
+
+  </p>
+
+  To view a websites' credentials:
+  <p>
+    Click the closed padlock in a browser window
+    Click the trust mark (such as a Norton Secured Seal)
+    Look in the green address bar triggered by an Extended Validation (EV) SSL
+  </p>
+
+
+</section>

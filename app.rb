@@ -57,6 +57,10 @@ class App < Sinatra::Base
     erb :oop
   end
 
+  get "/ssl" do
+    erb :ssl
+  end
+
   get "/refactoring" do
     erb :refactoring
   end
