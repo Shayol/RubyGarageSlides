@@ -14,22 +14,11 @@
 <section id="intro" class="slide">
   <h2>SSL</h2>
   <p>
-    SSL (pronounced as separate letters) is short for <em>Secure Sockets Layer</em>.
+    <a href='http://www.webopedia.com/TERM/S/SSL.html'>SSL</a> (pronounced as separate letters) is short for <em>Secure Sockets Layer</em>.
   </p>
   <p>
     <strong>Secure Sockets Layer (SSL)</strong> is a protocol developed by Netscape for transmitting private documents via the Internet. SSL uses a cryptographic system that uses two keys to encrypt data − a public key known to everyone and a private or secret key known only to the recipient of the message.
   </p>
-  Rakefile
-  <script type="syntaxhighlighter" class="brush: ruby">
-    desc "Make coffee"
-    task :make_coffee do
-      puts "Made a cup of coffee. Shakes are gone."
-    end
-  </script>
-  <script type="syntaxhighlighter" class="brush: bash">
-    rake -T
-    rake morning:make_coffee  # Make coffee
-  </script>
 </section><section id="how-ssl-works" class="slide">
 
 <h2>How SSL Works</h2>
@@ -38,7 +27,117 @@
   When a Web browser tries to connect to a website using SSL, the browser will first request the web server identify itself. This prompts the web server to send the browser a copy of the SSL Certificate. The browser checks to see if the SSL Certificate is trusted --  if the SSL Certificate is trusted, then the browser sends a message to the Web server. The server then responds to the browser with a digitally signed acknowledgement to start an SSL encrypted session. This allows encrypted data to be shared between the browser and the server. You may notice that your browsing session now starts with https (and not http).
 </p>
 
+<p>
+  <a href='https://www.symantec.com/page.jsp?id=how-ssl-works'>What Happens When a Browser Encounters SSL</a>
+</p>
+
+    <ol>
+      <li>
+        A browser attempts to connect to a website secured with SSL.
+      </li>
+
+      <li>
+        The browser requests that the web server identify itself.
+      </li>
+
+      <li>
+        The server sends the browser a copy of its SSL Certificate.
+      </li>
+
+      <li>
+        The browser checks whether it trusts the SSL Certificate. If so, it sends a message to the server.
+      </li>
+
+      <li>
+        The server sends back a digitally signed acknowledgement to start an SSL encrypted session.
+      </li>
+
+      <li>
+        Encrypted data is shared between the browser and the server and https appears.
+      </li>
+    </ol>
+
+</section><section id="how-ssl-really-works" class="slide">
+<h3><a href='https://support.microsoft.com/en-us/kb/257591'>What really happens.</a></h3>
+    <ol>
+      <li>
+        The client sends the server the client's SSL version number, cipher settings, session-specific data, and other information that the server needs to communicate with the client using SSL.
+      </li>
+      <li>
+        The server sends the client the server's SSL version number, cipher settings, session-specific data, and other information that the client needs to communicate with the server over SSL. The server also sends its own certificate, and if the client is requesting a server resource that requires client authentication, the server requests the client's certificate
+      </li>
+      <li>
+        The client uses the information sent by the server to authenticate the server. If the server cannot be authenticated, the user is warned of the problem and informed that an encrypted and authenticated connection cannot be established. If the server can be successfully authenticated, the client proceeds to step 4.
+      </li>
+      <li>
+        Using all data generated in the handshake thus far, the client (with the cooperation of the server, depending on the cipher being used) creates the pre-master secret for the session, encrypts it with the server's public key (obtained from the server's certificate, sent in step 2), and then sends the encrypted pre-master secret to the server.
+      </li>
+      <li>
+        If the server has requested client authentication (an optional step in the handshake), the client also signs another piece of data that is unique to this handshake and known by both the client and server. In this case, the client sends both the signed data and the client's own certificate to the server along with the encrypted pre-master secret.
+      </li>
+      <li>
+        If the server has requested client authentication, the server attempts to authenticate the client (see Client Authentication for details). If the client cannot be authenticated, the session ends. If the client can be successfully authenticated, the server uses its private key to decrypt the pre-master secret, and then performs a series of steps (which the client also performs, starting from the same pre-master secret) to generate the master secret.
+      </li>
+      <li>
+        Both the client and the server use the master secret to generate the session keys, which are symmetric keys used to encrypt and decrypt information exchanged during the SSL session and to verify its integrity (that is, to detect any changes in the data between the time it was sent and the time it is received over the SSL connection)
+      </li>
+      <li>
+        The client sends a message to the server informing it that future messages from the client will be encrypted with the session key. It then sends a separate (encrypted) message indicating that the client portion of the handshake is finished.
+      </li>
+      <li>
+        The server sends a message to the client informing it that future messages from the server will be encrypted with the session key. It then sends a separate (encrypted) message indicating that the server portion of the handshake is finished.
+      </li>
+      <li>
+        The SSL handshake is now complete and the session begins. The client and the server use the session keys to encrypt and decrypt the data they send to each other and to validate its integrity
+      </li>
+    </ol>
+</section><section id="ssl-sertificate" class="slide">
+Credentials Establish Identity Online
+
+  <p>
+    <p><strong>What is a CA?</strong></p>
+    <p>
+      A <strong>certificate authority</strong> is an entity that issues digital certificates. If a certificate has been issued by a trusted CA then the ownership of the public key can also be trusted. The CA is a trusted third party that is trusted by both client and server.
+    </p>
+
+  <p>
+    Browsers and/or operating systems tend to come with a pre-defined list of CA certificates used as trust anchors to check the certificates of servers they connect to. They're all customisable (except for EV certificates, for which the root certificates are hard-coded into the browser, although you can disable them).
+  </p>
+
+  <p>
+    Firefox uses its own list on all platforms.You can go to preferences -> advanced -> certificates -> view certificates -> authorities, this will present you with a list of trusted authorities where you can view more information
+  </p>
+
+  <p>
+    Internet Explorer and Chrome use the operating system's certificate repository on Windows. The default is available via Microsoft's Root Certificate programme.
+
+    Apple also has its programme.
+  </p>
+
+  <h4>To view a websites' credentials:</h4>
+  <p>
+    Click the closed padlock in a browser window
+    Click the trust mark (such as a Norton Secured Seal)
+    Look in the greenish address bar triggered by an Extended Validation (EV) SSL
+  </p>
+  <p>
+    <strong>EV</strong> (extended validation) certificates which require the CA to fully verify the organisation before issuing a certificate. These include checking government records and contacting the organisation to verify the person requesting the certificate is authorised to do so. A EV certificate usually is displayed as a greenish bar or text and more detailed information about the company.
+  </p>
+</section><section id="ssl-vulnerability" class="slide">
+<h2><a href='https://www.hackthis.co.uk/articles/what-is-ssl-and-how-does-it-protect-our-online-transactions'>Problems with SSL?</a></h2>
+<ul>
+  <li>SSLStrip</li>
+  <li>SSL Renegotiation Attack</li>
+  <li>BEAST</li>
+</ul>
+ <p><strong>
+  What happens when a CA is hacked.</strong> DigiNotar in 2011 had a serve security breach which resulted in a large number of fraudulently issued certificates. These certificates included domains of Yahoo, Mozilla, WordPress and Tor. As a browser is responsible for the list of verified authorities it is not easy to update this list when one authority can no longer be trusted. All major browsers issued security updates blacklisting DigiNotar's root certificate.
+ </p>
+<p>
+  An investigation into the hacking by Dutch-government appointed Fox-IT consultancy identified 300,000 Iranian Gmail users as the main target of the hack (targeted subsequently using man-in-the-middle attacks), and suspected that Iranian government was behind the hack.
+</p>
 </section>
+
 <!-- End slides. -->
 
 <!-- deck.navigation snippet -->

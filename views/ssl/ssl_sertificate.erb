@@ -1,0 +1,33 @@
+<section id="ssl-sertificate" class="slide">
+Credentials Establish Identity Online
+
+  <p>
+    <p><strong>What is a CA?</strong></p>
+    <p>
+      A <strong>certificate authority</strong> is an entity that issues digital certificates. If a certificate has been issued by a trusted CA then the ownership of the public key can also be trusted. The CA is a trusted third party that is trusted by both client and server.
+    </p>
+
+  <p>
+    Browsers and/or operating systems tend to come with a pre-defined list of CA certificates used as trust anchors to check the certificates of servers they connect to. They're all customisable (except for EV certificates, for which the root certificates are hard-coded into the browser, although you can disable them).
+  </p>
+
+  <p>
+    Firefox uses its own list on all platforms.You can go to preferences -> advanced -> certificates -> view certificates -> authorities, this will present you with a list of trusted authorities where you can view more information
+  </p>
+
+  <p>
+    Internet Explorer and Chrome use the operating system's certificate repository on Windows. The default is available via Microsoft's Root Certificate programme.
+
+    Apple also has its programme.
+  </p>
+
+  <h4>To view a websites' credentials:</h4>
+  <p>
+    Click the closed padlock in a browser window
+    Click the trust mark (such as a Norton Secured Seal)
+    Look in the greenish address bar triggered by an Extended Validation (EV) SSL
+  </p>
+  <p>
+    <strong>EV</strong> (extended validation) certificates which require the CA to fully verify the organisation before issuing a certificate. These include checking government records and contacting the organisation to verify the person requesting the certificate is authorised to do so. A EV certificate usually is displayed as a greenish bar or text and more detailed information about the company.
+  </p>
+</section>
