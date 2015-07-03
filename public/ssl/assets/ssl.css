@@ -12433,3 +12433,6 @@ a.label:hover, a.badge:hover {
 .slide h2, .slide h3 {
   text-align: center;
 }
+.slide img {
+  padding: 30px;
+}
